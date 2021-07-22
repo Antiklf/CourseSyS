@@ -56,12 +56,12 @@ $result=db_query($sql);
 	for($i=0;$i<$number;$i++)
 	{
 		$row=db_fetch_array($result);
-		
+		if($row['flag']){
 			if($i%2==0)
 			echo "<tr bgcolor='#dddddd'>";
 			else
 			 echo "<tr>";
-			 echo "<td width='80' valign='middle' align='center'><a href='CourseDetail.php?CouNo=".$row['CouNo']."'>".$row['CouNo']."</a></td>";
+		echo "<td width='80' valign='middle' align='center'><a href='CourseDetail.php?CouNo=".$row['CouNo']."'>".$row['CouNo']."</a></td>";
  ?>       
     <td width="108"  valign='middle' align='center'><?php echo $row['CouName'] ?></td>
     <td width="127" valign='middle' align='center'><?php echo $row['Kind']  ?></td>
@@ -71,7 +71,7 @@ $result=db_query($sql);
     </tr>
     
 <?php		
-}
+}}
 ?>
 </table>
 </div>

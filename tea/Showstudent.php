@@ -8,7 +8,11 @@
   <link rel="stylesheet" href="../css/footer.css" />
   <script type="text/javascript" src="../bootstrap/js/bootstrap.bundle.js"></script>
 </head>
-
+<style>
+.show{
+	border:3px solid white;
+}
+</style>
 <body class="d-flex flex-column h-100">
 
 <?php include("header.php");?>
@@ -31,7 +35,8 @@ if(! isset($_SESSION['username']))
 	$ShowCourseResult=db_query($ShowCourse_sql);
 
 ?>
-<div class="contain-wrap" style="min-height: 3000px;">
+<div class='show'>
+<div class="contain-wrap" >
 <div class="myTable">
 <table class="table table-hover"  border="0" align="center" cellpadding="0" cellspacing="1">
 	<caption align="top" style="text-align:center"><font size="5" color="black">
@@ -153,7 +158,7 @@ if(db_num_rows($ShowCourseResult)>0){
 
 				</div>
 					</div>
-
+</div>
 <script type="text/javascript">
 	if(document.getElementById("get")!=null){
 		var tab = document.getElementsByName("hiden");

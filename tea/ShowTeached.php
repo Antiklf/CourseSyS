@@ -19,8 +19,8 @@ if(! isset($_SESSION['username']))
 	header("Location:../login.php");
 	exit();
 	}
-	$StuNo=$_SESSION['username'];
-	$ShowCourse_sql="select * from course where Teacher in(select TeaName from Teacher where TeaNo='$StuNo') ORDER BY CouNo";
+	$TeaNo=$_SESSION['username'];
+	$ShowCourse_sql="select * from course where Teacher in(select TeaName from Teacher where TeaNo='$TeaNo') ORDER BY CouNo";
 	$ShowCourseResult=db_query($ShowCourse_sql);
 ?>
 <div class="contain-wrap">
@@ -124,6 +124,7 @@ if(! isset($_SESSION['username']))
 	else{
 				echo"<script>";
 				echo"alert(\"暂无课程安排！\");";
+				//echo"alert('$TeaNo');";
 				echo"location.href=\"ShowCourse.php\"";
 				echo"</script>";
 				}

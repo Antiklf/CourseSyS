@@ -10,6 +10,11 @@
 <script type="text/javascript" src="../bootstrap/js/bootstrap.bundle.js"></script>
 
 <title>修改密码</title>
+<script>
+ function security(){//跳转函数
+	self.location="./security.php";
+}
+</script>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -48,8 +53,9 @@ if(! isset($_SESSION["username"])){
 								placeholder="请再次输入新密码" name="repPwd">
 						</div>
 						<div class="form-group set-center" id="buttons">
-							<button type="submit" name="B1" id="B1" class="btn btn-primary set-padding" >提交</button>
-							<button type="reset" name="B2" id="B2" class="btn btn-primary set-padding">重置</button>
+							<button type="submit" name="B1" id="B1" class="btn btn-primary set-padding" >提交修改</button>
+							<button type="button" name="B2" id="B2" class="btn btn-primary set-padding" onclick='return security()'>修改密保</button>
+							<button type="reset" name="B3" id="B3" class="btn btn-primary set-padding">重置</button>
 						</div>
 				</fieldset>
 			</form>

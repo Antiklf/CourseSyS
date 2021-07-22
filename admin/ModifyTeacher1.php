@@ -29,12 +29,22 @@ include("../conn/db_conn.php");
 include("../conn/db_func.php");
 $TeaNo=$_POST['TeaNo'];
 $TeaName=$_POST['TeaName'];
-$DepartNo=$_POST['DepartNo'];
+$DepartNo=($_POST['DepartNo']!='')?$_POST['DepartNo']:0;
 $TeaNo=trim($TeaNo);
 $TeaName=trim($TeaName);
 $DepartNo=trim($DepartNo);
-$UpdateCourse_SQL="update Teacher set TeaNo='$TeaNo',TeaName='$TeaName',DepartNo='$DepartNo' where Teacher.TeaNo='$TeaNo'";
+$UpdateCourse_SQL="update Teacher set TeaNo='$TeaNo',TeaName='$TeaName' where Teacher.TeaNo='$TeaNo'";
 $UpdateCourse_Result=db_query($UpdateCourse_SQL);
+
+$Pwd=($_POST['Pwd']!='')?$_POST['Pwd']:0;
+if($Pwd!=0){
+	$Pwd=sha1($Pwd);
+	mysql_query("update Teacher set Pwd='$Pwd' where Teacher.TeaNo='$TeaNo'");
+}
+if($DepartNo!=0){
+	
+	mysql_query("update Teacher set DepartNo='$DepartNo' where Teacher.TeaNo='$TeaNo'");
+}
 
 if($UpdateCourse_Result){
 	echo"<script>";

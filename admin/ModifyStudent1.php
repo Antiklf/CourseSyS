@@ -38,6 +38,11 @@ $ClassNo=trim($ClassNo);
 $UpdateCourse_SQL="update Student set StuNo='$StuNo',StuName='$StuName',ClassNo='$ClassNo' where Student.StuNo='$StuNo'";
 $UpdateCourse_Result=db_query($UpdateCourse_SQL);
 
+$Pwd=($_POST['Pwd']!='')?$_POST['Pwd']:0;
+if($Pwd!=0){
+	$Pwd=sha1($Pwd);
+	mysql_query("update student set Pwd='$Pwd' where student.StuNo='$StuNo'");
+}
 if($UpdateCourse_Result){
 	echo"<script>";
 	echo"alert(\"课程学生修改成功\");";

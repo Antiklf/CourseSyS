@@ -44,6 +44,9 @@ $row=db_fetch_array($ShowDetailResult);
 
           <label for="exampleSelect1" class="form-label mt-4">所在班级:</label>
           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"placeholder="" name="ClassNo" value="<?php echo $row['ClassNo']?>"/>
+		  
+		  		<label for="exampleSelect1" class="form-label mt-4">重置密码：</label>
+          <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"placeholder="" name="Pwd"  />
 
           <div class="form-group set-center">
           <button type="submit" name="B1" id="button" class="btn btn-primary set-padding">确定</button>

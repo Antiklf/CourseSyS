@@ -23,6 +23,7 @@ if($role=="teacher")
 		$ChkLoginResult=db_query($ChkLogin);
 		$number=db_num_rows($ChkLoginResult);
         $row=db_fetch_array($ChkLoginResult);
+		echo $number;
 		if($number>0){
 			if($role=="teacher"){
 				$_SESSION["username"]=$username;
@@ -37,6 +38,7 @@ if($role=="teacher")
 			}else{
 				echo"<script>";
 				echo"alert(\"错误的用户名或者密码，请重新登录\");";
+				//echo"alert(\"$pwd\");";
 				echo"location.href=\"login.php\"";
 				echo"</script>";
 				}

@@ -53,21 +53,23 @@ for($j=2;$j<=$highestRow;$j++)
         $DepartNo=trim($DepartNo);
         $pw='0000'.substr($TeaNo,4,4);
 
-        $AddTeacher_SQL="insert into Teacher values('$TeaNo','$DepartNo','$TeaName',SHA1('$pw'))";
+        $AddTeacher_SQL="insert into Teacher values('$TeaNo','$DepartNo','$TeaName',SHA1(".$pw."))";
         $AddTeacher_Result=db_query($AddTeacher_SQL);
+if(!$AddTeacher_Result){
+	echo"<script>";
+	echo"alert(\"添加教师失败，请重新添加\");";
+	echo"location. href=\"AddTea.php\"";
+	echo"</script>";
+	}
 
-
-        if(!$AddTeacher_Result){
-            echo"<script>";
-            echo"alert(\"添加老师失败，请重新添加\");";
-            echo"location. href=\"Addtea.php?flag=fail&type=batch\"";
-            echo"</script>";
-        }
     }
-    echo"<script>";
-echo"alert(\"添加老师成功\");";
-echo"location. href=\"AddTea.php?flag=success&type=batch\"";
-echo"</script>";
+
+
+	echo"<script>";
+	echo"alert(\"添加教师成功\");";
+	echo"location. href=\"ShowTea.php\"";
+	echo"</script>";
+		
 ?>
 </body>
 </html>

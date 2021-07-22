@@ -43,7 +43,7 @@ $pw='0000'.substr($StuNo,4,4);
 $Search_ClassNo = "SELECT ClassNo FROM class WHERE ClassName='$classnam'";
 $Search_Result = db_query($Search_ClassNo);
 $row = mysql_fetch_array($Search_Result);
-$AddStudent_SQL="insert into Student values('$StuNo','".$row[0]."','$StuName',SHA1('$pw'))";
+$AddStudent_SQL="insert into Student values('$StuNo','".$row[0]."','$StuName',SHA1(".$pw."))";
 $AddStudent_Result=db_query($AddStudent_SQL);
 
 

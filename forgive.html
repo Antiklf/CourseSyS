@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="h-100">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录界面</title>
+<link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+    <script type="text/javascript" src="./bootstrap/js/bootstrap.buddle.js"></script>
+<script>
+function find_question(){//找密保问题
+	var adminNo=document.getElementById("adminNo").value;
+	if (window.XMLHttpRequest)
+  {
+   // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+   xmlhttp=new XMLHttpRequest();
+  }
+  else
+  {    
+   //IE6, IE5 浏览器执行的代码
+   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+    document.getElementById("question").innerHTML=xmlhttp.responseText;
+        }
+  }
+  xmlhttp.open('GET','./findpassword.php?adminNo='+adminNo,true); 
+  xmlhttp.send();
+  
+}
+function mod_password(){
+	var adminNo=document.getElementById("adminNo").value;
+	var newpw=document.getElementById("password").value;
+	var surepw=document.getElementById("surepassword").value;
+	var answer=document.getElementById("answer").value;
+	var pattern=/^[!@#$%^&*\w]{8,20}$/;
+	
+     if(newpw!=surepw){
+             alert("*两次密码输入不一致！");
+			 return false;}
+	
+     if(!pattern.test(newpw)){
+             alert("密码必须是8-20位");
+			 return false;}
+}
+</script>
+</head>
+<body class="d-flex flex-column h-100">
+  <div class="wrap" >
+    <div class="header">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">学生管理系统（管理员）</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">忘记密码页
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="contain-wrap">
+      <div id="myForm" class="myForm" style="margin-top:30px;">
+        <form method="post" action="findpassword.php" onsubmit="return mod_password()">
+          <fieldset>
+            <legend>忘记密码</legend>
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="form-label mt-4" >用户名</label>
+              <input type="text" class="form-control"  placeholder="请输入账号" name="adminNo" id='adminNo' onBlur="find_question()">
+            </div>
+			<div class="form-group">
+              <label for="exampleInputEmail1" class="form-label mt-4" >点击这里等待密保问题</label>
+              <div type="text" class="form-control"   name="que"  id='question' style="height:35px" ></div>
+            </div>
+	
+		
+		
+		
+		<div class="form-group">
+              <label for="exampleInputPassword1" class="form-label mt-4">密保问题答案</label>
+              <input type="text" class="form-control" id="answer" placeholder="请输入密码" name="answer" >
+            </div>
+		
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label mt-4">新密码</label>
+              <input type="password" class="form-control" id="password" placeholder="请输入密码" name="password">
+            </div>
+			<div class="form-group">
+              <label for="exampleInputPassword1" class="form-label mt-4">确认密码</label>
+              <input type="password" class="form-control" id="surepassword" placeholder="请输入确认密码" name="surepassword">
+            </div>
+
+            <hr>
+            <div class="form-group set-center">
+              <button type="submit" name="button" id="button" class="btn btn-primary set-padding" >提交</button>
+            </div>
+          </fieldset>
+        </form>
+        <hr>
+		        <div class="alert alert-dismissible alert-light">
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          请点击<a href="admin.php" class="alert-link">这里</a>登陆
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+    </div>
+  </div>
+
+
+</body>
+</html>

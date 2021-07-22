@@ -8,7 +8,11 @@
   <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
   <link rel="stylesheet" href="./css/style.css" />
     <script type="text/javascript" src="./bootstrap/js/bootstrap.buddle.js"></script>
-
+<script>
+ function forgive(){//跳转函数
+	self.location="./forgive.html";
+}
+</script>
 </head>
 <body class="d-flex flex-column h-100">
   <div class="wrap">
@@ -57,6 +61,7 @@
             <div class="form-group set-center">
               <button type="submit" name="button" id="button" class="btn btn-primary set-padding">提交</button>
               <button type="reset" name="button" id="button" class="btn btn-primary set-padding">重置</button>
+			  <button type="button" name="button" id="button" class="btn btn-primary set-padding" onclick='return forgive()' >忘记密码</button>
             </div>
           </fieldset>
         </form>

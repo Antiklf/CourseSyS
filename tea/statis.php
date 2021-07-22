@@ -147,7 +147,7 @@ if(! isset($_SESSION["username"])){//会话不存在就回去登录
 	//将结果返回到页面上
 	echo"<script>document.getElementById('maxscore').innerHTML='".$detail['maxscore']."'</script>";
 	echo"<script>document.getElementById('minscore').innerHTML='".$detail['minscore']."'</script>";
-	echo"<script>document.getElementById('avgscore').innerHTML='".$detail['avgscore']."'</script>";
+	echo"<script>document.getElementById('avgscore').innerHTML='".round($detail['avgscore'],2)."'</script>";
 	echo"<script>document.getElementById('passnum').innerHTML='".$detail['passnum']."'</script>";
 	echo"<script>document.getElementById('stunum').innerHTML='".$detail['stunum']."'</script>";
 	echo"<script>document.getElementById('over').innerHTML='".$detail['over90'].','.$detail['over80'].','.$detail['over70'].','.$detail['over60'].','.$detail['over50'].','.$detail['over40'].','.$detail['over30'].','.$detail['over20'].','.$detail['over10'].','.$detail['over0']."'</script>";

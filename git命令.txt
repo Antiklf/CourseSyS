@@ -1,0 +1,10 @@
+
+cd D:\phpStudy_class\WWW\jiaowu
+git config pull.rebase true
+git add .
+git commit -m "选课冲突修改版"
+git pull https://github.com/isabellaswan9/jiaowu.git master
+git push https://github.com/isabellaswan9/jiaowu.git master 
+isabellaswan9
+qwersdx4862
+https://github.com/isabellaswan9/jiaowu.git

@@ -153,27 +153,32 @@ if(! isset($_SESSION["username"])){//会话不存在就回去登录
 	header("Location:../login.php");
 	exit();
 	}
-	//$StuNo=$_POST[StuNo];//学号
-	$StuNo = $_SESSION['username'];
-	//$StuNo='12345678';
-	$ShowDetail_sql="select * from coursetable where StuNo='$StuNo'";//查看该学生选了什么课
+
+	$StuNo = $_SESSION['username'];	
+	$ShowDetail_sql="select * from coursetable where StuNo='$StuNo'";//查看该学生的所有选课
 	$ShowDetailResult=db_query($ShowDetail_sql);
-	//获取StuNo, course.CouNo,CouName,Classroom,time1,time2,time3，一门课一行
+	
 	while($detail=mysql_fetch_array($ShowDetailResult)){//以课时号为定位把课程名和教室放入对应的格子
-	for($i=1;$i<25;$i++){
-		if($detail['time1']==$i)
-		echo"<script>document.getElementById('".$i."').innerHTML='".$detail['CouName'].
-		"<br>".$detail['Classroom']."'</script>";
+		for($i=1;$i<25;$i++){
+			if($detail['time1']==$i){
+				echo"<script>document.getElementById('".$i."').innerHTML='".$detail['CouName'].
+				"<br>".$detail['Classroom']."'</script>";
+				break;
+			}
 		}
 		for($i=1;$i<25;$i++){
-		if($detail['time2']==$i)
-		echo"<script>document.getElementById('".$i."').innerHTML='".$detail['CouName'].
-		"<br>".$detail['Classroom']."'</script>";
+			if($detail['time2']==$i){
+				echo"<script>document.getElementById('".$i."').innerHTML='".$detail['CouName'].
+				"<br>".$detail['Classroom']."'</script>";
+				break;
+			}
 		}
-	for($i=1;$i<25;$i++){
-		if($detail['time3']==$i)
-		echo"<script>document.getElementById('".$i."').innerHTML='".$detail['CouName'].
-		"<br>".$detail['Classroom']."'</script>";
+		for($i=1;$i<25;$i++){
+			if($detail['time3']==$i){
+				echo"<script>document.getElementById('".$i."').innerHTML='".$detail['CouName'].
+				"<br>".$detail['Classroom']."'</script>";
+				break;
+			}
 		}			
 	}
 

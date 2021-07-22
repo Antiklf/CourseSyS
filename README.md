@@ -1,4 +1,3 @@
-小组成员：林嘉敏、杨敏铝、罗思源、邓小英
 开发软件：NotePad++
 # 学生选课系统
 PHP+Bootsrap5+MySQL+JavaScript+jQuery+Ajax
@@ -22,10 +21,6 @@ PHP+Bootsrap5+MySQL+JavaScript+jQuery+Ajax
 
 ## 使用指南
 1. 将此系统clone到/phpStudyLite/WWW中。
-```bash
-git clone https://github.com/isabellaswan9/jiaowu.git
-cd jiaowu
-```
 2. 下载phpstudylite 2014或phpstudy,打开apache和mysql,将xk.sql文件导入到mysql数据库中。
 3. 在地址栏输入localhost/jiaowu即可运行。
 4. 注意使用最新的主流浏览器，以正常显示bootstrap5（不支持IE）。
